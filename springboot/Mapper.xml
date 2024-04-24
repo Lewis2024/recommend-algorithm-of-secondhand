@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="getTotalNumberOfProducts" resultType="int">
+        SELECT COUNT(*) AS total FROM goods
+    </select>
+
+    <select id="getCollectRecords" resultType="java.util.List">
+        SELECT fid FROM collect WHERE user_id = #{userId}
+    </select>
+
+    <select id="getPurchaseRecords" resultType="java.util.List">
+        SELECT id FROM orders WHERE user_id = #{userId}
+    </select>
+
+    <select id="getAllUserIds" resultType="java.util.List">
+        SELECT DISTINCT user_id FROM collect
+    </select>
+</mapper>
